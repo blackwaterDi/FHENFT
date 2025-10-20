@@ -38,17 +38,31 @@ export function AllowAccess() {
       <h2 className="title">Grant Attribute Access</h2>
       <div className="grid">
         <label className="label">Token ID</label>
-        <input className="input" type="number" value={tokenId} onChange={e=>setTokenId(e.target.value)} />
+        <input
+          className="input"
+          type="number"
+          min="0"
+          placeholder="Your NFT token ID"
+          value={tokenId}
+          onChange={e=>setTokenId(e.target.value)}
+        />
 
         <label className="label">Attribute</label>
         <select className="input" value={attr} onChange={e=>setAttr(parseInt(e.target.value))}>
-          {ATTRS.map(a => <option key={a.key} value={a.idx}>{a.key}</option>)}
+          {ATTRS.map(a => <option key={a.key} value={a.idx}>{a.key.charAt(0).toUpperCase() + a.key.slice(1)}</option>)}
         </select>
 
         <label className="label">Reader Address</label>
-        <input className="input" placeholder="0x..." value={reader} onChange={e=>setReader(e.target.value)} />
+        <input
+          className="input"
+          placeholder="0x... (address to grant access to)"
+          value={reader}
+          onChange={e=>setReader(e.target.value)}
+        />
       </div>
-      <button className="button" onClick={onAllow} disabled={pending}> {pending ? 'Granting...' : 'Grant'} </button>
+      <button className="button" onClick={onAllow} disabled={pending || !reader}>
+        <span>{pending ? '🔑 Granting...' : '✨ Grant Access'}</span>
+      </button>
     </section>
   );
 }

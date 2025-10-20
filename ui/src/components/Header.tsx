@@ -10,7 +10,7 @@ export function Header() {
             <h1 className="header-title">
               FHENFT
             </h1>
-            
+            <span className="header-badge">Privacy First</span>
           </div>
           <ConnectButton />
         </div>
