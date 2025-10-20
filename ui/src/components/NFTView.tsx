@@ -65,16 +65,43 @@ export function ViewAttributes() {
       <h2 className="title">View Attributes</h2>
       <div className="row">
         <label className="label">Token ID</label>
-        <input className="input" type="number" value={tokenId} onChange={e=>setTokenId(e.target.value)} />
+        <input
+          className="input"
+          type="number"
+          min="0"
+          placeholder="Enter NFT token ID"
+          value={tokenId}
+          onChange={e=>setTokenId(e.target.value)}
+        />
       </div>
       <button className="button" onClick={onDecrypt} disabled={pending || !address}>
-        {pending ? 'Decrypting...' : 'Decrypt My Access'}
+        <span>{pending ? '🔓 Decrypting...' : '🔐 Decrypt Attributes'}</span>
       </button>
       <div className="grid mt">
-        <div className="pill">Level: {dec.level ?? '-'}</div>
-        <div className="pill">Exp: {dec.exp ?? '-'}</div>
-        <div className="pill">Attack: {dec.attack ?? '-'}</div>
-        <div className="pill">Defense: {dec.defense ?? '-'}</div>
+        <div className="pill">
+          <div style={{fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.25rem'}}>Level</div>
+          <div style={{fontSize: '1.25rem', fontWeight: '700', color: dec.level ? 'var(--primary-light)' : 'var(--text-muted)'}}>
+            {dec.level ?? '—'}
+          </div>
+        </div>
+        <div className="pill">
+          <div style={{fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.25rem'}}>Experience</div>
+          <div style={{fontSize: '1.25rem', fontWeight: '700', color: dec.exp ? 'var(--secondary)' : 'var(--text-muted)'}}>
+            {dec.exp ?? '—'}
+          </div>
+        </div>
+        <div className="pill">
+          <div style={{fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.25rem'}}>Attack</div>
+          <div style={{fontSize: '1.25rem', fontWeight: '700', color: dec.attack ? 'var(--error)' : 'var(--text-muted)'}}>
+            {dec.attack ?? '—'}
+          </div>
+        </div>
+        <div className="pill">
+          <div style={{fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.25rem'}}>Defense</div>
+          <div style={{fontSize: '1.25rem', fontWeight: '700', color: dec.defense ? 'var(--success)' : 'var(--text-muted)'}}>
+            {dec.defense ?? '—'}
+          </div>
+        </div>
       </div>
     </section>
   );

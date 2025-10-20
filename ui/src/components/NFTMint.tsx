@@ -62,24 +62,57 @@ export function Mint() {
       <h2 className="title">Mint NFT</h2>
       <div className="grid">
         <label className="label">Recipient</label>
-        <input className="input" placeholder="0x... (optional)" value={to} onChange={e=>setTo(e.target.value)} />
+        <input
+          className="input"
+          placeholder="0x... (optional, defaults to your address)"
+          value={to}
+          onChange={e=>setTo(e.target.value)}
+        />
 
         <label className="label">Level</label>
-        <input className="input" type="number" value={level} onChange={e=>setLevel(e.target.value)} />
+        <input
+          className="input"
+          type="number"
+          min="1"
+          placeholder="Character level (1-4,294,967,295)"
+          value={level}
+          onChange={e=>setLevel(e.target.value)}
+        />
 
-        <label className="label">Exp</label>
-        <input className="input" type="number" value={exp} onChange={e=>setExp(e.target.value)} />
+        <label className="label">Experience</label>
+        <input
+          className="input"
+          type="number"
+          min="0"
+          placeholder="Experience points"
+          value={exp}
+          onChange={e=>setExp(e.target.value)}
+        />
 
         <label className="label">Attack</label>
-        <input className="input" type="number" value={attack} onChange={e=>setAttack(e.target.value)} />
+        <input
+          className="input"
+          type="number"
+          min="1"
+          placeholder="Attack power"
+          value={attack}
+          onChange={e=>setAttack(e.target.value)}
+        />
 
         <label className="label">Defense</label>
-        <input className="input" type="number" value={defense} onChange={e=>setDefense(e.target.value)} />
+        <input
+          className="input"
+          type="number"
+          min="1"
+          placeholder="Defense capability"
+          value={defense}
+          onChange={e=>setDefense(e.target.value)}
+        />
       </div>
-      <button className="button" onClick={onMint} disabled={pending}>
-        {pending ? 'Minting...' : 'Mint'}
+      <button className="button" onClick={onMint} disabled={pending || !address}>
+        <span>{pending ? '⏳ Minting...' : '🎨 Mint NFT'}</span>
       </button>
-      {lastTokenId !== null && <div className="info">Minted token #{lastTokenId}</div>}
+      {lastTokenId !== null && <div className="info">Successfully minted token #{lastTokenId}!</div>}
     </section>
   );
 }
