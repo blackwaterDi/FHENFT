@@ -1,6 +1,6 @@
 // FHENFT contract deployed on Sepolia
 // IMPORTANT: After deploying, paste the deployed address here
-export const CONTRACT_ADDRESS = '0xB2F2115CD182f5c95A50710B2A66C79d56EABfc6' as const;
+export const CONTRACT_ADDRESS = '0x7538f928A5487B95B3be3EdCfF9335E3500C02D2' as const;
 
 // FHENFT ABI copied from contract artifacts (no JSON file used)
 export const CONTRACT_ABI = [

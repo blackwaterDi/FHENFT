@@ -3,13 +3,12 @@ pragma solidity ^0.8.24;
 
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-
 import {FHE, euint32, externalEuint32} from "@fhevm/solidity/lib/FHE.sol";
-import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
+import {ZamaEthereumConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
 
 /// @title FHENFT - ERC721 with encrypted attributes
 /// @notice Adds encrypted attributes (level, exp, attack, defense) to each token.
-contract FHENFT is ERC721, SepoliaConfig, Ownable {
+contract FHENFT is ERC721, ZamaEthereumConfig, Ownable {
 
     enum Attr {
         Level,
